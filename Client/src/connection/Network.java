@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 public class Network {
 
@@ -18,13 +17,13 @@ public class Network {
 
     }
 
-    public int start(String address, int port){
-        try {
+    public int start(String address, int port) throws IOException {
+
             socket = new Socket(address, port);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-
+        /*
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + address);
             throw new RuntimeException(e);
@@ -33,7 +32,7 @@ public class Network {
             System.err.println("Couldn't get I/O for the connection to " + address);
             throw new RuntimeException(e);
 
-        }
+        }*/
 
         return 0;
     }
