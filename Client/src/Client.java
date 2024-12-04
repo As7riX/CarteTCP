@@ -15,16 +15,16 @@ public class Client {
 
         int ris = net.start(serverAddress, port);
 
-        System.out.println("Connected to server at " + serverAddress + ":" + port);
+            System.out.println("Connected to server at " + serverAddress + ":" + port);
 
-        String userInput;
-        while ((userInput = stdIn.readLine()) != null) {
-            // Send user input to the server
+            String userInput;
+            while ((userInput = stdIn.readLine()) != null) {
+                // Send user input to the server
             net.send(userInput);
 
-            // Read response from the server and print it
+                // Read response from the server and print it
             String response = net.recive();
-            System.out.println("Server response: " + response);
-        }
+                System.out.println("Server response: " + response);
+            }
     }
 }
