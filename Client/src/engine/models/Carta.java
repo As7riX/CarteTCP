@@ -1,6 +1,6 @@
 package engine.models;
 
-public class Carta {
+class Carta {
 
     public static enum Semi { cuori, quadri, fiori, picche};
     public static enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly};
@@ -20,14 +20,17 @@ public class Carta {
     }
 
     public Semi get_seme() {
+
         return Seme;
     }
 
     public int get_punteggio() {
+
         return punteggio;
     }
 
     public void set_punteggio(int p) {
+
         punteggio = p;
     }
 
