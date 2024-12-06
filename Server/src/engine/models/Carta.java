@@ -2,12 +2,12 @@ package engine.models;
 
 class Carta {
 
-    public static enum Semi { cuori, quadri, fiori, picche};
-    public static enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly};
+    public enum Semi { cuori, quadri, fiori, picche}
+    public enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly}
 
-    private Semi Seme;
-    private Valori Valore;
-    private int punteggio = 0;
+    private final Semi Seme;
+    private final Valori Valore;
+    private int punteggio;
 
     public Carta(Semi s, Valori v, int p) {
         Seme = s;
@@ -16,6 +16,7 @@ class Carta {
     }
 
     public Valori get_valore() {
+
         return Valore;
     }
 

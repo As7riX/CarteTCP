@@ -3,16 +3,22 @@
 import java.util.List;
 
 public class Mazzo {
-    private List<Carta> carte_mazzo;
-
+    private List<Carta> CarteMazzo;
 
     public Mazzo(int type){
+
         //creazione mazzo
         switch (type){
 
+            case 5: {
+                for (seme : Carta.Semi) {
+
+                }
+            }
+
             //mazzo singolo completo
             case 0: {
-                for (int i = Carta::cuori; i <= Carta::picche; ++i)
+                for (int i = 0; i < 4; ++i)
                     for (int k = Carta::asso; k <= Carta::jolly; k++)
                         carte_mazzo.add(Carta(static_cast<Carta::semi>(i), static_cast<Carta::valore>(k)));
             }
