@@ -1,12 +1,16 @@
 package engine.models;
 
+import java.util.ArrayDeque;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
 
 public class Mazzo {
-    private List<Carta> CarteMazzo;
+    private Deque<Carta> CarteMazzo;
 
     public Mazzo(int type){
+
+        CarteMazzo = new ArrayDeque<>();
 
         //creazione mazzo
         switch (type){
@@ -48,7 +52,7 @@ public class Mazzo {
     }
 
     public void mescola(){
-        Collections.shuffle(CarteMazzo);
+        Collections.shuffle((List<?>) CarteMazzo);
     }
 
     //funzione distribuisci prima carta
@@ -82,8 +86,9 @@ public class Mazzo {
 
     //funzione impostazione punteggio
     public void setPunteggio(int[] point) {
-        for (int i = 0; i < CarteMazzo.size(); i++)
-            CarteMazzo.get(i).set_punteggio(point[CarteMazzo.get(i).get_valore().ordinal()]);
+        for (Carta c : CarteMazzo) {
+            c.set_punteggio(point[c.get_valore().ordinal()]);
+        }
     }
 
     //ricevi numero carte
