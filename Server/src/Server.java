@@ -1,3 +1,5 @@
+import engine.service.CommandListener;
+
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.*;
@@ -7,6 +9,11 @@ public class Server {
     protected static ConcurrentHashMap<String, Socket> players = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
+
+        Thread cli = new Thread(new CommandListener());
+        cli.start();
+
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server in ascolto sulla porta " + PORT);
 
