@@ -1,10 +1,23 @@
-import connection.Network;
+
+import com.google.gson.Gson;
+import engine.models.*;
+import netscape.javascript.JSObject;
 
 import java.io.*;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        // Define the server's IP address and port number
+
+        Carta carta = new Carta(Carta.Semi.cuori, Carta.Valori.asso);
+
+        Carta.PrintCard(carta, false);
+        Gson gson = new Gson();
+
+        String json = gson.toJson(carta);
+
+        System.out.println(json);
+
+        /*
         String serverAddress = "127.0.0.1";
         int port = 12345;
 
@@ -18,12 +31,12 @@ public class Client {
 
             String userInput;
             while ((userInput = stdIn.readLine()) != null) {
-                // Send user input to the server
+
             net.send(userInput);
 
                 // Read response from the server and print it
             String response = net.recive();
                 System.out.println("Server response: " + response);
-            }
+         }*/
     }
 }
