@@ -1,38 +1,28 @@
 package engine.models;
 
-class Carta {
+public class Carta {
 
-    public enum Semi { cuori, quadri, fiori, picche}
-    public enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly}
+    public enum Semi { CUORI, QUADRI, FIORI, PICCHE }
+    public enum Valori { ASSO, DUE, TRE, QUATTRO, CINQUE, SEI, SETTE, OTTO, NOVE, DIECI, FANTE, DONNA, RE }
 
-    private final Semi Seme;
-    private final Valori Valore;
-    private int punteggio;
+    private Semi seme;
+    private Valori valore;
 
-    public Carta(Semi s, Valori v, int p) {
-        Seme = s;
-        Valore = v;
-        punteggio = p;
+    public Carta(Semi s, Valori v) {
+        this.seme = s;
+        this.valore = v;
     }
 
-    public Valori get_valore() {
-
-        return Valore;
+    public Semi getSeme() {
+        return seme;
     }
 
-    public Semi get_seme() {
-
-        return Seme;
+    public Valori getValore() {
+        return valore;
     }
 
-    public int get_punteggio() {
-
-        return punteggio;
+    @Override
+    public String toString() {
+        return valore.name() + " di " + seme.name();
     }
-
-    public void set_punteggio(int p) {
-
-        punteggio = p;
-    }
-
 }
