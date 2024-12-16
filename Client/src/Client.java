@@ -1,9 +1,10 @@
 
 import com.google.gson.Gson;
+import connection.Network;
 import engine.models.*;
-import netscape.javascript.JSObject;
 
-import java.io.*;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) throws IOException {
@@ -17,11 +18,10 @@ public class Client {
 
         System.out.println(json);
 
-        /*
         String serverAddress = "127.0.0.1";
         int port = 12345;
 
-        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        Scanner stdIn = new Scanner(System.in);  // Create a Scanner object
 
         Network net = new Network();
 
@@ -30,13 +30,13 @@ public class Client {
             System.out.println("Connected to server at " + serverAddress + ":" + port);
 
             String userInput;
-            while ((userInput = stdIn.readLine()) != null) {
+            while ((userInput = stdIn.nextLine()) != null) {
 
             net.send(userInput);
 
                 // Read response from the server and print it
             String response = net.recive();
                 System.out.println("Server response: " + response);
-         }*/
+         }
     }
 }
