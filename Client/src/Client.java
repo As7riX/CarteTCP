@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) throws IOException {
 
+        /*
         Carta carta = new Carta(Carta.Semi.cuori, Carta.Valori.asso);
 
         Carta.PrintCard(carta, false);
@@ -16,7 +17,7 @@ public class Client {
 
         String json = gson.toJson(carta);
 
-        System.out.println(json);
+        System.out.println(json);*/
 
         String serverAddress = "127.0.0.1";
         int port = 12345;
