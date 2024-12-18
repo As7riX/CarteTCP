@@ -12,26 +12,13 @@
    cd CarteTCP
    ```
 
-3. Compila il progetto utilizzando il comando:
-   ```bash
-   javac -d bin src/**/*.java
-   ```
+3. Compila il progetto utilizzando un editor
 
 4. Esegui il server e il client:
-   - Avvia il server:
-     ```bash
-     java -cp bin engine.server.Server
-     ```
-   - Avvia il client:
-     ```bash
-     java -cp bin engine.client.Client
-     ```
-
----
 
 ## **Uso**
 
 1. Avvia il server sulla macchina host.
-2. Configura l'indirizzo IP del server nel file `Client.java` (di default: `127.0.0.1`).
-3. Esegui il client e interagisci con il server inviando comandi.
+2. Avvia molteplici instanze  del client
+3. Esegui il client e interagisci con il server.
 
