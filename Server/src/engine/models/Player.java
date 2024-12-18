@@ -8,7 +8,6 @@ import java.net.Socket;
 
 public class Player implements Runnable {
 
-    private String nome;
     private Mazzo mano;
 
     private Socket socket;
@@ -34,10 +33,6 @@ public class Player implements Runnable {
         ready = false;
     }
 
-    public String getNome(){
-        return nome;
-    }
-
     public Mazzo getMano(){
         return mano;
     }
@@ -50,15 +45,25 @@ public class Player implements Runnable {
         return mano.getFirstCard();
     }
 
+    public void closeConnection(){
+        try {
+            socket.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean getReady(){
         return ready;
     }
 
     public String getLastCommand(){
-        String tmp = lastMessage;
-        lastMessage = null;
-        return tmp;
+        return lastMessage;
 
+    }
+
+    public void clearCommand(){
+        lastMessage = null;
     }
 
     public void sendMessage(String msg){
@@ -72,18 +77,23 @@ public class Player implements Runnable {
 
             String comando;
 
-            while (true){
+            while (socket.isConnected()) {
                 while ((comando = in.readLine()) != null) {
                     comando = comando.trim().toLowerCase();
 
-                    lastMessage = comando;
-
+                    if (comando.equals("si") || comando.equals("no")) {
+                        lastMessage = comando;
+                    }else{
+                        out.println("Comando non valido");
                     }
+
+
                 }
+            }
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Connessione Terminata");
         }
     }
 

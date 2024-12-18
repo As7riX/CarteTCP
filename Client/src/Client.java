@@ -1,11 +1,10 @@
 import engine.connection.ListnerHandler;
 import engine.connection.Network;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Client {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         String serverAddress = "127.0.0.1";
         int port = 12345;
 
@@ -27,16 +26,20 @@ public class Client {
             while (true) {
                 String userInput = scanner.nextLine();
 
-                if (userInput.equalsIgnoreCase("quit")) {
+                if (userInput.equalsIgnoreCase("exit")) {
                     break;
+                }else if (userInput.equalsIgnoreCase("join")) {
+                    if (!net.status()) net.start(serverAddress, port);
+                    else System.out.println("Sei gia connesso al server.");
+                }else if (userInput.equalsIgnoreCase("quit")) {
+                    net.stop();
+                    System.out.println("Disconnesso dal server.");
                 }
 
                 net.send(userInput); // Send message to the server
             }
         } catch (Exception e) {
             System.err.println("Error while reading user input: " + e.getMessage());
-        } finally {
-            //net.close(); // Ensure the connection is closed
         }
     }
 }

@@ -22,6 +22,7 @@ public class ListnerHandler implements Runnable {
                 String response = net.recive();
                 if (response == null) {
                     System.out.println("Server disconnected.");
+                    System.exit(0);
                     break;
                 }
 

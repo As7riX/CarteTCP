@@ -1,6 +1,6 @@
 package engine.models;
 
-class Carta {
+public class Carta {
 
     public enum Semi { cuori, quadri, fiori, picche}
     public enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly}

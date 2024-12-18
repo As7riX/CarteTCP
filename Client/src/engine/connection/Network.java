@@ -30,6 +30,14 @@ public class Network {
         return 0;
     }
 
+    public void stop() throws IOException {
+        socket.close();
+    }
+
+    public boolean status(){
+        return !socket.isClosed();
+    }
+
     public void send(String msg){
         out.println(msg);
     }
