@@ -46,6 +46,11 @@ public class Mazzo {
                 }
             }
 
+            //mazzo vuoto
+            case 3:{
+
+            }
+
             default:
                 break;
         }
