@@ -7,15 +7,18 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Player implements Runnable {
+
     private String nome;
     private Mazzo mano;
+
+    private Socket socket;
     private BufferedReader in;
+    private PrintWriter out;
+
+    private boolean ready;
 
     private String lastMessage;
 
-    private PrintWriter out;
-
-    private Socket socket;
 
     public Player(Socket s) {
         socket = s;
@@ -27,9 +30,8 @@ public class Player implements Runnable {
         }
 
         lastMessage = null;
-
-        /*nome = username;
-        mano = new Mazzo(3);*/
+        mano = new Mazzo(3);
+        ready = false;
     }
 
     public String getNome(){
@@ -48,6 +50,10 @@ public class Player implements Runnable {
         return mano.getFirstCard();
     }
 
+    public boolean getReady(){
+        return ready;
+    }
+
     public String getLastCommand(){
         String tmp = lastMessage;
         lastMessage = null;
@@ -61,14 +67,8 @@ public class Player implements Runnable {
 
     public void run() {
         try {
-            out.println("ciao quale e il tuo username?");
-
-            String input = in.readLine();
-
-            nome = input;
-
-            out.println("Benvenuto " + nome + "! Sei entrato nella lobby.");
-
+            out.println("Sei entrato nella lobby.");
+            ready = true;
 
             String comando;
 

@@ -5,23 +5,24 @@ import static java.util.Map.entry;
 
 public class Carta {
 
-    public static enum Semi { CUORI, QUADRI, FIORI, PICCHE };
-    public static enum Valori { ASSO, DUE, TRE, QUATTRO, CINQUE, SEI, SETTE, OTTO, NOVE, DIECI, FANTE, DONNA, RE, JOLLY };
+    public enum Semi { cuori, quadri, fiori, picche}
+    public enum Valori { asso, due, tre, quattro, cinque, sei, sette, otto, nove, dieci, fante, donna, re, jolly}
 
-    private Semi seme;
-    private Valori valore;
+    private final Semi Seme;
+    private final Valori Valore;
+    private int punteggio;
 
     public Carta(Semi s, Valori v) {
-        valore = v;
-        seme = s;
+        Valore = v;
+        Seme = s;
     }
 
     public Semi getSeme() {
-        return seme;
+        return Seme;
     }
 
     public Valori getValore() {
-        return valore;
+        return Valore;
     }
 
     public static void PrintCard(Carta carta, boolean coperta) {
@@ -65,13 +66,13 @@ public class Carta {
             );
 
             out[0] = "-----------\t";
-            out[1] = "|" + s.get(carta.seme.ordinal()) + "        |\t";
+            out[1] = "|" + s.get(carta.Seme.ordinal()) + "        |\t";
             out[2] = "|         |\t";
             out[3] = "|         |\t";
-            out[4] = "|    " + v.get(carta.valore.ordinal()) + "    |\t";
+            out[4] = "|    " + v.get(carta.Valore.ordinal()) + "    |\t";
             out[5] = "|         |\t";
             out[6] = "|         |\t";
-            out[7] = "|        "+ s.get(carta.seme.ordinal()) + "|\t";
+            out[7] = "|        "+ s.get(carta.Seme.ordinal()) + "|\t";
             out[8] = "-----------\t";
         }
 
@@ -83,7 +84,7 @@ public class Carta {
 
     @Override
     public String toString() {
-        return valore.name() + " di " + seme.name();
+        return Valore.name() + " di " + Seme.name();
     }
 
 }

@@ -1,16 +1,15 @@
 package engine.models;
 
-import java.util.ArrayDeque;
 import java.util.Collections;
-import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Mazzo {
-    private Deque<Carta> CarteMazzo;
+    private LinkedList<Carta> CarteMazzo;
 
     public Mazzo(int type){
 
-        CarteMazzo = new ArrayDeque<>();
+        CarteMazzo = new LinkedList<>();
 
         //creazione mazzo
         switch (type){

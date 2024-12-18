@@ -17,22 +17,15 @@ public class Network {
 
     }
 
-    public int start(String address, int port) throws IOException {
+    public int start(String address, int port) {
 
+        try {
             socket = new Socket(address, port);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
-
-        /*
-        } catch (UnknownHostException e) {
-            System.err.println("Don't know about host " + address);
-            throw new RuntimeException(e);
-
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to " + address);
-            throw new RuntimeException(e);
-
-        }*/
+            return -1;
+        }
 
         return 0;
     }
