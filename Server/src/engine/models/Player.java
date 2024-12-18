@@ -9,11 +9,25 @@ import java.net.Socket;
 public class Player implements Runnable {
     private String nome;
     private Mazzo mano;
+    private BufferedReader in;
+
+    private String lastMessage;
+
+    private PrintWriter out;
 
     private Socket socket;
 
-    public Player(Socket s){
+    public Player(Socket s) {
         socket = s;
+        try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+        } catch (IOException e) {
+            System.out.println("Errore" + e);
+        }
+
+        lastMessage = null;
+
         /*nome = username;
         mano = new Mazzo(3);*/
     }
@@ -34,50 +48,42 @@ public class Player implements Runnable {
         return mano.getFirstCard();
     }
 
+    public String getLastCommand(){
+        String tmp = lastMessage;
+        lastMessage = null;
+        return tmp;
+
+    }
+
+    public void sendMessage(String msg){
+        out.println(msg);
+    }
+
     public void run() {
-        try (
-                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                PrintWriter out = new PrintWriter(s.getOutputStream(), true)
-        ) {
+        try {
             out.println("ciao quale e il tuo username?");
 
-            // 2) Leggi username
-            while (true) {
-                String input = in.readLine();
+            String input = in.readLine();
 
-                nome = input;
-
-            }
+            nome = input;
 
             out.println("Benvenuto " + nome + "! Sei entrato nella lobby.");
 
-            // Aspetta che la partita inizi
-            while (!gameManager.partitaIniziata()) {
-                // Attende la partita (nessun sleep necessario, si aspetta input)
-                // Non fare niente fino a quando la partita non inizia (il manager manda i messaggi)
-                Thread.sleep(100);
-            }
 
-            // Ora la partita è iniziata, aspettiamo i comandi
             String comando;
-            while ((comando = in.readLine()) != null) {
-                comando = comando.trim().toLowerCase();
-                if (comando.equals("prendi")) {
-                    gameManager.comandoPrendi(username);
-                } else if (comando.equals("stai")) {
-                    gameManager.comandoStai(username);
-                } else if (comando.equals("abbandona")) {
-                    gameManager.comandoAbbandona(username);
-                    return;
-                } else {
-                    out.println("Comando non valido. Usa 'prendi', 'stai' o 'abbandona'.");
-                }
-            }
 
-        } catch (IOException | InterruptedException e) {
-            System.out.println("Connessione persa con " + username);
-        } finally {
-            cleanup();
+            while (true){
+                while ((comando = in.readLine()) != null) {
+                    comando = comando.trim().toLowerCase();
+
+                    lastMessage = comando;
+
+                    }
+                }
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
