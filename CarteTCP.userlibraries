@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="google.code.gson">
+    <archive path="C:/Users/Alessio/Documents/CarteTCP/lib/gson-2.11.0.jar" />
+    <archive path="C:/Users/Alessio/Documents/CarteTCP/lib/error_prone_annotations-2.27.0.jar" />
+  </library>
+</eclipse-userlibraries>
+
