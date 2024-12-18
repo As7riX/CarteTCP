@@ -100,12 +100,6 @@ public class Mazzo {
         return CarteMazzo.size();
     }
 
-    //aggiungi al mazzo
-    /*
-    public void addCard(Carta c, int p) {
-        .insert(carte_mazzo.begin() + p, c);
-    }*/
-
     //aggiungi carta cima mazzo
     public void addCardUp(Carta c) {
         CarteMazzo.addLast(c);
