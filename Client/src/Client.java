@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args){
-        String serverAddress = "127.0.0.1";
-        int port = 12345;
+        String serverAddress = "127.0.0.1"; //indirizzo server
+        int port = 12345; //porta server
 
         Network net = new Network();
         int connectionStatus = net.start(serverAddress, port);

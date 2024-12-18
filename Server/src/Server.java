@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
-    public static final int PORT = 12345;
+    public static final int PORT = 12345; //porta server
     protected static ConcurrentHashMap<String, Socket> players = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
